@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DTAI SIG Quarterly Newsletter — Q2 2026</title>
+<style>
+  :root{
+    --purple:#6A2C91;
+    --teal:#0F7C7C;
+    --teal-deep:#0B5E5E;
+    --ink:#1c1c1c;
+    --grey:#575757;
+    --line:#d9d9d9;
+    --tint:#f3edf8;
+    --tint-teal:#e9f4f4;
+    --zebra:#f6f6f6;
+    --flag:#b00020;
+    --flagbg:#fdeef0;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:#e7e7ea;
+    color:var(--ink);
+    font-family:Calibri,"Segoe UI",system-ui,-apple-system,Arial,sans-serif;
+    font-size:11pt;
+    line-height:1.42;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* ---- screen toolbar ---- */
+  .toolbar{
+    position:sticky;top:0;z-index:50;
+    background:#1c1c1c;color:#fff;
+    display:flex;align-items:center;gap:14px;
+    padding:9px 18px;font-size:10.5pt;
+  }
+  .toolbar span{opacity:.75;}
+  .toolbar button{
+    margin-left:auto;
+    background:var(--teal);color:#fff;border:0;border-radius:5px;
+    padding:8px 16px;font:inherit;font-weight:600;cursor:pointer;
+  }
+  .toolbar button:hover{background:var(--teal-deep);}
+
+  /* ---- page ---- */
+  .page{
+    width:8.5in;min-height:11in;
+    margin:22px auto;
+    background:#fff;
+    padding:0.5in 0.55in 0.55in;
+    box-shadow:0 3px 18px rgba(0,0,0,.18);
+  }
+
+  /* ---- masthead ---- */
+  .eyebrow{
+    display:flex;justify-content:space-between;align-items:baseline;
+    font-size:8.5pt;letter-spacing:.04em;color:var(--grey);
+    text-transform:uppercase;font-weight:700;
+  }
+  .eyebrow .q{color:var(--teal);}
+  .rule-teal{height:3px;background:var(--teal);margin:6px 0 12px;}
+  .rule-purple{height:3px;background:var(--purple);margin:12px 0;}
+
+  .masthead{display:flex;align-items:center;gap:18px;}
+  .logo{flex:0 0 auto;display:flex;align-items:center;}
+  .logo-img{height:66px;width:auto;display:block;}
+  .logo-bars{display:grid;grid-template-columns:repeat(3,10px);grid-auto-rows:5px;gap:2px;}
+  .logo-bars i{display:block;border-radius:1px;}
+  .logo-bars i:nth-child(1){background:#e34a33;}
+  .logo-bars i:nth-child(2){background:#f6b21b;}
+  .logo-bars i:nth-child(3){background:#3aa648;}
+  .logo-bars i:nth-child(4){background:#e34a33;}
+  .logo-bars i:nth-child(5){background:#2779b5;}
+  .logo-bars i:nth-child(6){background:#6a2c91;}
+  .logo-bars i:nth-child(7){background:#f6b21b;}
+  .logo-bars i:nth-child(8){background:#3aa648;}
+  .logo-bars i:nth-child(9){background:#2779b5;}
+  .logo-word{font-size:22pt;font-weight:800;letter-spacing:.02em;color:#2b2b2b;line-height:1;}
+  .logo-sub{font-size:7.5pt;color:var(--grey);max-width:150px;line-height:1.15;margin-top:3px;}
+  .masthead-right{margin-left:auto;text-align:right;}
+  .masthead-right .title{font-size:24pt;font-weight:800;color:var(--purple);line-height:1;}
+  .masthead-right .date{font-size:10.5pt;font-style:italic;font-weight:700;margin-top:6px;color:var(--ink);}
+
+  /* ---- inside this issue ---- */
+  .toc{background:var(--tint);padding:9px 14px 11px;margin-top:4px;}
+  .toc h4{margin:0 0 6px;color:var(--purple);font-size:10.5pt;letter-spacing:.03em;}
+  .toc ol{margin:0;padding:0;list-style:none;columns:3;column-gap:18px;font-size:9.5pt;color:var(--ink);}
+  .toc li{padding:1px 0;break-inside:avoid;}
+  .toc li b{color:var(--teal);margin-right:6px;}
+
+  /* ---- body columns ---- */
+  .body{
+    column-count:2;
+    column-gap:0.34in;
+    column-fill:balance;
+    margin-top:0;
+    text-align:left;
+  }
+  /* masthead sits inside the column flow as a full-width banner so the
+     browser never breaks a page between the header and the columns */
+  .masthead-wrap{column-span:all;margin:0 0 10px;}
+  /* Only keep small, atomic blocks from splitting across columns/pages.
+     Let sections and paragraphs flow naturally so pages fill top-to-bottom. */
+  .scard,.callout,.vote,.flag,.qa{break-inside:avoid;}
+  .body p, .body li{break-inside:auto;}
+
+  h1.sec{
+    column-span:none;
+    font-size:15.5pt;color:var(--purple);font-weight:800;
+    margin:16px 0 4px;padding-top:9px;
+    border-top:2px solid var(--teal);
+    break-after:avoid;break-inside:avoid;
+  }
+  h1.sec:first-of-type{margin-top:0;}
+  h2.sub{font-size:12.5pt;color:var(--teal);font-weight:700;margin:8px 0 4px;break-after:avoid;}
+  h3.lbl{font-size:10.5pt;font-style:italic;font-weight:700;color:#222;margin:10px 0 3px;break-after:avoid;}
+  p{margin:0 0 8px;}
+  .byline{font-weight:700;margin:2px 0 0;}
+  .role{font-size:9pt;color:var(--grey);letter-spacing:.03em;margin:1px 0 0;}
+  .sig{display:flex;align-items:center;gap:10px;margin-top:2px;break-inside:avoid;}
+  .sig-text{flex:0 0 auto;}
+  .sig-text .byline{margin:0;}
+  .sig-photo{width:56px;height:56px;border-radius:8px;object-fit:cover;flex:0 0 auto;border:1px solid var(--line);}
+  .cite{font-size:9.5pt;color:#333;}
+  em.j{font-style:italic;}
+  a{color:#1155cc;text-decoration:underline;word-break:break-word;}
+
+  ul.dash{margin:0 0 8px;padding-left:16px;}
+  ul.dash li{margin:0 0 4px;}
+
+  /* callout treatments */
+  .callout{
+    background:var(--tint-teal);
+    border-left:3px solid var(--teal);
+    padding:8px 11px;margin:6px 0 10px;
+    break-inside:avoid;
+  }
+  .callout .lede{font-style:italic;color:var(--grey);font-size:9.5pt;margin:0;}
+
+  .qa{margin:0 0 9px;}
+  .qa .q{font-weight:700;color:#1c1c1c;margin:0 0 2px;}
+  .qa .a{margin:0;}
+  .qa .a b{color:var(--teal);}
+
+  /* ISPE session cards */
+  .scard{
+    border:1px solid var(--line);border-left:3px solid var(--purple);
+    background:#fbf9fd;padding:8px 11px;margin:0 0 9px;break-inside:avoid;
+  }
+  .scard .t{font-weight:700;color:#1c1c1c;font-size:10.5pt;margin:0 0 3px;line-height:1.3;}
+  .scard .meta{font-size:8.7pt;color:var(--teal);font-weight:700;letter-spacing:.02em;margin:0 0 2px;text-transform:uppercase;}
+  .scard .who{font-size:9pt;color:var(--grey);margin:0;}
+
+  /* gold community-events box */
+  .goldbox{background:#fdf6e0;border:1px solid #d9b64b;border-left:3px solid #c39a1c;border-radius:4px;padding:8px 12px;margin:4px 0 10px;break-inside:avoid;}
+  .goldbox .gb-h{margin:0 0 4px;font-weight:700;color:#8a6b16;font-size:10pt;}
+  .goldbox ul{margin:0;padding-left:16px;list-style:disc;}
+  .goldbox li{font-size:9.5pt;margin:0 0 2px;color:var(--ink);}
+  .goldbox li:last-child{margin-bottom:0;}
+
+  /* vote highlight */
+  .vote{
+    background:var(--tint);border:1px solid #d8c6e6;border-top:3px solid var(--purple);
+    padding:9px 12px;margin:4px 0 10px;break-inside:avoid;
+  }
+  .vote .h{color:var(--purple);font-weight:800;font-size:11pt;margin:0 0 3px;}
+  .vote p{margin:0 0 5px;font-size:10pt;}
+  .vote p:last-child{margin:0;}
+
+  .flag{
+    background:var(--flagbg);border:1px dashed var(--flag);
+    color:var(--flag);font-size:9pt;font-style:italic;
+    padding:6px 9px;margin:6px 0 10px;break-inside:avoid;
+  }
+
+  /* ---- full-width breakout tables ---- */
+  .fw{column-span:all;margin:10px 0 12px;}
+  /* explicit page break for print; visible marker on screen */
+  .pagebreak{column-span:all;height:0;break-before:page;-webkit-column-break-before:page;}
+  @media screen{
+    .pagebreak{height:auto;margin:16px 0 4px;border-top:2px dashed #c7c7cf;text-align:center;}
+    .pagebreak::before{content:"page break";font-size:7.5pt;letter-spacing:.12em;text-transform:uppercase;color:#b3b3bd;background:#fff;padding:0 8px;position:relative;top:-8px;}
+  }
+  .legend{font-size:8.5pt;color:var(--grey);margin:2px 2px 0;}
+  table.data{width:100%;border-collapse:collapse;font-size:9pt;}
+  table.data th{
+    background:var(--teal);color:#fff;text-align:left;
+    padding:6px 8px;font-weight:700;
+  }
+  table.data td{padding:5px 8px;border-bottom:1px solid var(--line);vertical-align:top;}
+  table.data tr:nth-child(even) td{background:var(--zebra);}
+  .fw-cap{font-size:8.5pt;color:var(--grey);font-style:italic;margin:4px 2px 0;}
+
+  /* ---- footer ---- */
+  .foot{
+    column-span:all;margin-top:14px;padding-top:8px;
+    border-top:2px solid var(--teal);
+    display:flex;justify-content:space-between;
+    font-size:8.5pt;color:var(--grey);
+  }
+
+  /* ---- print ---- */
+  @media print{
+    body{background:#fff;}
+    .toolbar{display:none;}
+    .page{width:auto;min-height:0;margin:0;padding:0;box-shadow:none;}
+    .body{column-fill:auto;}
+    .eyebrow,.masthead,.toc,.rule-teal,.rule-purple{break-inside:avoid;break-after:avoid;}
+    @page{size:Letter;margin:0.5in;}
+    a{color:#1155cc;}
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <span>DTAI SIG Newsletter — Q2 2026 draft. Two-column newsletter layout. Use Print to save as PDF.</span>
+  <button onclick="window.print()">Print / Save as PDF</button>
+</div>
+
+<div class="page">
+
+  <div class="body">
+
+  <!-- masthead banner spans both columns -->
+  <div class="masthead-wrap">
+
+  <!-- eyebrow -->
+  <div class="eyebrow"><span>Digital Technology and Artificial Intelligence SIG</span><span class="q">Q2 2026</span></div>
+  <div class="rule-teal"></div>
+
+  <!-- masthead -->
+  <div class="masthead">
+    <div class="logo"><img class="logo-img" src="data:image/png;base64,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" alt="ISPE Digital Technology and Artificial Intelligence Special Interest Group"></div>
+    <div class="masthead-right">
+      <div class="title">QUARTERLY NEWSLETTER</div>
+      <div class="date">Issue Date: July 10, 2026</div>
+    </div>
+  </div>
+  <div class="rule-purple"></div>
+
+  <!-- inside this issue -->
+  <div class="toc">
+    <h4>INSIDE THIS ISSUE</h4>
+    <ol>
+      <li><b>1</b>Welcome</li>
+      <li><b>2</b>Frontier Model Watch: Q2 2026</li>
+      <li><b>3</b>Featured Study: Frontier vs. Clinical AI</li>
+      <li><b>4</b>Featured at ISPE 2026: DTAI Track</li>
+      <li><b>5</b>Leadership: Voting Opens Soon</li>
+      <li><b>6</b>What&rsquo;s on our Reading List</li>
+      <li><b>7</b>Conferences, Webinars &amp; Workshops</li>
+      <li><b>8</b>SIG Meetings &amp; Get Involved</li>
+    </ol>
+  </div>
+  </div><!-- /masthead-wrap -->
+
+    <!-- 1. WELCOME -->
+    <h1 class="sec">Welcome</h1>
+    <p>Welcome to the Q2 2026 edition of the DTAI SIG newsletter. The second quarter was one of the most exciting stretches for frontier AI this year. Anthropic, OpenAI, and Google all shipped major model releases, including the first publicly available Mythos-class model from Anthropic and a new default model for ChatGPT. We cover the releases that matter most for our community in a new Frontier Model Watch section this issue.</p>
+    <p>The quarter also produced a study that has many questioning the reliability of domain tailored models. A <em class="j">Nature Medicine</em> evaluation found that general-purpose frontier models outperformed two widely marketed clinical AI tools across medical knowledge, clinician alignment, and real clinical queries. The finding speaks directly to the need for benchmarking and validating models especially if they are used to benefit patients in any way.</p>
+    <p>Closer to home, we held our inaugural Research Day on April 23, convened our all-SIG meeting on May 7 hosted by the GenAI Working Group, and kicked off our new Agentic AI working group being led by Emaan Rashidi (JHU).</p>
+    <p>Looking ahead, the 42nd ISPE Annual Meeting runs August 29 to September 2 in Milan, and the DTAI SIG will have a strong presence. I&rsquo;m extremely proud of all the work we&rsquo;ve been doing and looking forward to a great meeting!</p>
+    <p>Thank you for your continued engagement.</p>
+    <div class="sig">
+      <div class="sig-text">
+        <p class="byline">John Diaz-Decaro, PhD, MS</p>
+        <p class="role">CHAIR, DTAI SIG</p>
+      </div>
+      <img class="sig-photo" src="data:image/png;base64,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" alt="John Diaz-Decaro">
+    </div>
+
+    <!-- 2. FRONTIER MODEL WATCH -->
+    <h1 class="sec">Frontier Model Watch: Q2 2026</h1>
+    <p>The second quarter delivered an unusually dense run of frontier model releases. The summary below is oriented to what matters for pharmacoepidemiology, pharmacovigilance, and RWE.</p>
+
+    <h3 class="lbl">Anthropic</h3>
+    <p>Anthropic shipped four models in the quarter. Claude Opus 4.7 (April 16) and Claude Opus 4.8 (May 28) improved coding, agentic reliability, and vision, with Opus 4.8 emphasizing honesty and self-verification. On June 9, Anthropic released Claude Fable 5, the first publicly available Mythos-class model, alongside the restricted Claude Mythos 5. Anthropic describes the Mythos class as sitting above its Opus class in capability. Fable 5 ships with safety classifiers that route flagged requests in areas such as cybersecurity and biology to Claude Opus 4.8. Mythos 5 is the same underlying model without those classifiers and is limited to vetted cyberdefenders through Project Glasswing.</p>
+    <p>On June 12, Anthropic suspended access to both Mythos-class models to comply with a U.S. Department of Commerce export-control directive. The Department lifted the controls on June 30, and Anthropic restored access on July 1. Access to the Opus, Sonnet, and Haiku models was unaffected throughout. Claude Sonnet 5, a lower-cost agentic model, followed on June 30.</p>
+
+    <h3 class="lbl">OpenAI</h3>
+    <p>OpenAI released GPT-5.5 on April 23, emphasizing agentic coding, computer use, and knowledge work. GPT-5.5 Instant became the default ChatGPT model for all users on May 5, with OpenAI reporting roughly 52 percent fewer hallucinated claims than the prior default on high-stakes prompts in medicine, law, and finance. OpenAI previewed the GPT-5.6 family (Sol, Terra, and Luna) to a limited set of partners on June 26 under a U.S. government safety review, with general availability following in early July.</p>
+
+    <h3 class="lbl">Google</h3>
+    <p>Google continued to iterate the Gemini 3 family. Gemini 3.1 Pro, released in February, remained its flagship reasoning model through much of the quarter and features in the <em class="j">Nature Medicine</em> study covered below. Google also moved additional Gemini 3.5 Flash and managed-agent platform capabilities to general availability.</p>
+
+    <!-- full-width model table -->
+    <div class="pagebreak"></div>
+    <div class="fw">
+      <table class="data">
+        <thead>
+          <tr><th style="width:23%">Model</th><th style="width:13%">Developer</th><th style="width:15%">Released</th><th>What is notable</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Claude Opus 4.7</td><td>Anthropic</td><td>Apr 16</td><td>Coding, agentic reliability, higher-resolution vision; Claude Design launch</td></tr>
+          <tr><td>GPT-5.5 (&ldquo;Spud&rdquo;)</td><td>OpenAI</td><td>Apr 23</td><td>Agentic coding, computer use, knowledge work</td></tr>
+          <tr><td>GPT-5.5 Instant</td><td>OpenAI</td><td>May 5</td><td>New ChatGPT default; large hallucination reduction on high-stakes prompts</td></tr>
+          <tr><td>Claude Opus 4.8</td><td>Anthropic</td><td>May 28</td><td>Honesty and self-verification; fast mode; Claude Code dynamic workflows</td></tr>
+          <tr><td>Claude Fable 5 / Mythos 5</td><td>Anthropic</td><td>Jun 9</td><td>First public Mythos-class model; Fable safeguarded, Mythos restricted</td></tr>
+          <tr><td>GPT-5.6 (Sol/Terra/Luna)</td><td>OpenAI</td><td>Jun 26 (preview)</td><td>Three-tier family; gated behind U.S. government safety review</td></tr>
+          <tr><td>Claude Sonnet 5</td><td>Anthropic</td><td>Jun 30</td><td>Lower-cost agentic model</td></tr>
+        </tbody>
+      </table>
+      <div class="fw-cap">Selected frontier model releases, Q2 2026. Preview dates noted where general availability came later.</div>
+    </div>
+
+    <h3 class="lbl">Why it matters</h3>
+    <p>Two themes stand out for our field. First, cybersecurity and biology capability now drives release strategy as well as safety concerns. Both Anthropic and OpenAI gated their most capable models behind classifiers, trusted-access programs, or government review. Second, the models are increasingly built for long-horizon, multi-step agentic work, which makes our agentic AI workstream critically important.</p>
+
+    <!-- 3. FEATURED STUDY -->
+    <h1 class="sec">Featured Study</h1>
+    <h2 class="sub">Frontier models outperform specialized clinical AI tools</h2>
+    <p class="cite">Vishwanath K, Alyakin A, Ghosh M, et al. General-purpose large language models outperform specialized clinical AI tools on medical benchmarks. <em class="j">Nat Med</em>. 2026. <a href="https://doi.org/10.1038/s41591-026-04431-5">doi:10.1038/s41591-026-04431-5</a></p>
+    <p>A team led by NYU Langone Health published an independent evaluation comparing two specialized clinical AI tools, OpenEvidence and UpToDate Expert AI, against three general-purpose frontier models: GPT-5.2, Gemini 3.1 Pro, and Claude Opus 4.6. The evaluation ran in three stages: 500 MedQA questions for medical knowledge, 500 HealthBench items for clinician alignment, and a real clinical queries benchmark built from 100 de-identified physician queries drawn from a live, HIPAA-compliant deployment. Twelve U.S. clinicians reviewed model outputs under randomized, blinded conditions, producing 1,800 model-question annotations.</p>
+    <h3 class="lbl">Findings</h3>
+    <p>The frontier models outperformed the specialized clinical tools on all three evaluations. On the real clinical queries benchmark, a clear two-tier structure emerged, with the three frontier models above the clinical tools. Notably, the specialized tools performed comparably to Google Search AI Overview, an auto-enabled consumer search feature. Safety outcomes did not differ across models. No system produced significantly more harmful content or hallucinations than any other.</p>
+    <h3 class="lbl">Caveats the authors raise</h3>
+    <p>The team is careful about scope. Clinical tools were queried through browser interfaces because they lack public APIs, which limited sample size. Standard benchmarks carry contamination risk, and HealthBench is an OpenAI-developed instrument, so the authors treat the blinded clinician evaluation as their primary evidence. They frame the results as a snapshot of a fast-moving landscape rather than a permanent ordering, and note that deeply subspecialized tasks and hospital-grounded, institution-specific models may still favor domain-specific approaches.</p>
+    <h3 class="lbl">Why it matters for our community</h3>
+    <p>This is a great example of a head to head comparison that is needed for LLMs and agentic systems. Today, there are hundreds of industry and vendor claims that their AI tools are superior to others but what&rsquo;s the gold standard? For pharmacoepidemiology and pharmacovigilance, where tools are marketed for writing protocols and other documents, signal detection, literature surveillance, and evidence synthesis, without a targeted validation procedure, these claims are arguably weak. In this manuscript, the authors conclude that the results <em>&ldquo;highlight the need for independent, real-world evaluation&rdquo;</em> before tools enter clinical settings. That is exactly the focus of our agentic AI workstream.</p>
+
+    <!-- 4. FEATURED AT ISPE 2026 -->
+    <div class="pagebreak"></div>
+    <h1 class="sec">Featured at ISPE 2026: DTAI Track</h1>
+    <p>The 42nd ISPE Annual Meeting runs August 29 to September 2 at the Allianz MiCo in Milan, and the DTAI track is one of the strongest yet. Several sessions to prioritize are below. Times are CEST. A full DTAI session companion, with the complete track and links to the official agenda, is being developed at the <a href="https://ispe-dtai-sig.github.io/ispe-2026-dtai-track/">DTAI at ISPE 2026 site</a>.</p>
+
+    <div class="scard">
+      <p class="meta">Symposium SW1 &middot; Mon Aug 31 &middot; 13:30&ndash;15:00</p>
+      <p class="t">When Machines Do the Science: If and When We Trust Agentic AI in Pharmacoepidemiology</p>
+      <p class="who">Moderated by Darmendra Ramcharran (GSK) and John Diaz-Decaro (Black Swan Causal Labs). Keynote delivered by Luis Pinheiro (EMA) and Jamal Jones (FDA). The SIG&rsquo;s flagship symposium on when agentic systems can, and cannot, be trusted to carry analytic work.</p>
+    </div>
+
+    <div class="scard">
+      <p class="meta">Podium &middot; Session 1A &middot; Mon Aug 31 &middot; 11:00</p>
+      <p class="t">Introducing the AI4HM protocol template</p>
+      <p class="who">Kathryn Rough (Epi Excellence). Presented within Session 1A, &ldquo;Will AI steal our jobs?&rdquo; (10:30&ndash;12:00), co-moderated by Giampiero Mazzaglia (Milano-Bicocca) and Doug Foster (ADS).</p>
+    </div>
+
+    <div class="scard">
+      <p class="meta">Podium &middot; Session 3D &middot; Tue Sep 1 &middot; 09:15</p>
+      <p class="t">Pharmacoepidemiological considerations for ML-based risk prediction studies</p>
+      <p class="who">Meghna Jani (University of Manchester). Presented within Session 3D, &ldquo;Your AI in action: data handling, classification and prediction&rdquo; (08:15&ndash;09:45), co-moderated by Dana Y. Teltsch (EviDT, LLC) and Romin Pajouheshnia (RTI Health Solutions).</p>
+    </div>
+
+    <div class="scard">
+      <p class="meta">Symposium SW-3 &middot; Tue Sep 1 &middot; 13:00&ndash;14:30</p>
+      <p class="t">Navigating the AI Era in Pharmacovigilance: Pharmacoepidemiology Beyond Traditional Methods</p>
+      <p class="who">Corresponding author: Jian-Yu E (Sanofi). Endorsed by the DTAI SIG following a membership vote.</p>
+    </div>
+    <div class="goldbox">
+      <p class="gb-h">Also join us on the DTAI track (Monday, Aug 31)</p>
+      <ul>
+        <li>DTAI SIG Spotlight Poster Walk (12:15&ndash;13:15)</li>
+        <li>DTAI SIG Meeting (19:00&ndash;20:00)</li>
+        <li>DTAI SIG Happy Hour (20:15&ndash;21:30)</li>
+      </ul>
+    </div>
+
+    <!-- 5. LEADERSHIP VOTING -->
+    <h1 class="sec">Leadership: Voting Opens Soon</h1>
+    <div class="vote">
+      <p class="h">Voting for the 2026&ndash;2027 DTAI SIG leadership team opens soon</p>
+      <p>Watch your inbox for the ballot. This is your opportunity to help shape the SIG&rsquo;s direction as agentic and generative AI move deeper into RWE and pharmacoepidemiology. Open nominations include:</p>
+      <ul class="dash" style="margin-top:2px;">
+        <li><b>Vice Chair</b> &ndash; 1-year term, with promotion to Chair in the second year.</li>
+        <li><b>Secretary</b> &ndash; 1-year term, with the option to serve a second year.</li>
+        <li><b>GenAI Workstream Lead</b> &ndash; 2-year term.</li>
+      </ul>
+      <p>The deadline to apply is <b>July 15</b>. Submit your nomination at <a href="https://forms.gle/UoSPvpAuqnVenYYh7">forms.gle/UoSPvpAuqnVenYYh7</a>.</p>
+    </div>
+
+    <!-- 6. READING LIST -->
+    <h1 class="sec">What&rsquo;s on our Reading List</h1>
+    <p>A snapshot of recent work from the past quarter, surfaced via PubMed and preprint servers. See also our Featured Study above (Vishwanath et al., <em class="j">Nat Med</em>).</p>
+    <h3 class="lbl">Agentic and generative AI in evidence generation</h3>
+    <ul class="dash">
+      <li>Gottweis J, et al. Accelerating scientific discovery with Co-Scientist. <em class="j">Nature</em>. 2026. <a href="https://doi.org/10.1038/s41586-026-10644-y">doi:10.1038/s41586-026-10644-y</a></li>
+      <li>Wang Z, et al. DeepER-Med: Advancing Deep Evidence-Based Research in Medicine Through Agentic AI. <em class="j">arXiv preprint</em>. 2026. <a href="https://arxiv.org/abs/2604.15456">arXiv:2604.15456</a></li>
+    </ul>
+    <h3 class="lbl">AI/ML in pharmacovigilance and RWE</h3>
+    <ul class="dash">
+      <li>Fort G, et al. irAE.AI: AI-powered exploration of real-world immune-related adverse events. <em class="j">JAMIA Open</em>. 2026. <a href="https://doi.org/10.1093/jamiaopen/ooag094">doi:10.1093/jamiaopen/ooag094</a></li>
+      <li>Venkatakrishnan AJ, et al. Weight-loss dynamics with tirzepatide versus semaglutide. <em class="j">PNAS Nexus</em>. 2026. <a href="https://doi.org/10.1093/pnasnexus/pgag171">doi:10.1093/pnasnexus/pgag171</a></li>
+    </ul>
+    <p class="legend">Article discovery via PubMed (pubmed.ncbi.nlm.nih.gov).</p>
+
+    <!-- 7. CONFERENCES -->
+    <div class="pagebreak"></div>
+    <h1 class="sec">Conferences, Webinars &amp; Workshops</h1>
+    <p>Selected upcoming events of interest to our community are listed below, spanning the major international meetings this autumn and a set of free or low-cost webinars for those who cannot travel. The calendar is dense through the fall, with the ISPE Annual Meeting in Milan, the DIA Real-World Evidence Conference near Washington, and ISPOR Europe in Vienna all falling within a ten-week window. Where a DTAI track or a dedicated AI and real-world evidence program is featured, we have noted it. If you are presenting AI or digital methods work at any of these meetings, let us know so we can highlight it in a future issue, and please flag any other conferences, workshops, or webinars you think members would value.</p>
+    <div class="fw">
+      <table class="data">
+        <thead>
+          <tr><th style="width:40%">Event</th><th style="width:20%">Date</th><th style="width:26%">Location</th><th>Cost</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>42nd ISPE Annual Meeting</td><td>Aug 29 &ndash; Sep 2, 2026</td><td>Milan, Italy</td><td>$$$</td></tr>
+          <tr><td>Nature Conference on AI</td><td>Sep 8&ndash;10, 2026</td><td>Paris, France</td><td>$$$</td></tr>
+          <tr><td>ISoP Annual Meeting</td><td>Sep 22&ndash;25, 2026</td><td>San Jose, Costa Rica</td><td>$$</td></tr>
+          <tr><td>DIA Real-World Evidence Conference</td><td>Oct 19&ndash;20, 2026</td><td>North Bethesda, MD, USA</td><td>$$$</td></tr>
+          <tr><td>ISPE Asian Conference</td><td>Oct 28 &ndash; Nov 1, 2026</td><td>Melbourne, Australia</td><td>$$</td></tr>
+          <tr><td>ISPOR Europe 2026</td><td>Nov 8&ndash;11, 2026</td><td>Vienna, Austria</td><td>$$$</td></tr>
+        </tbody>
+      </table>
+      <div class="fw-cap">Cost tiers are indicative: $$ mid-range, $$$ higher. Confirm current registration rates and dates on each event site.</div>
+    </div>
+    <h3 class="lbl">Free and low-cost webinars</h3>
+    <ul class="dash">
+      <li><b>AAMC AI in Academic Medicine Webinar Series</b> &ndash; ongoing, virtual, free. <a href="https://www.aamc.org/about-us/mission-areas/medical-education/artificial-intelligence-ai-academic-medicine-webinar-series">aamc.org</a></li>
+      <li><b>Duke AI Health Virtual Seminar Series</b> &ndash; ongoing, virtual, free (check availability). <a href="https://aihealth.duke.edu/events/">aihealth.duke.edu/events</a></li>
+      <li><b>DIA Webinars</b> &ndash; ongoing, virtual, free and paid options. <a href="https://www.diaglobal.org/en/course-listing/webinar/listing">diaglobal.org</a></li>
+      <li><b>FDA Digital Health Advisory Committee</b> &ndash; dates TBD, virtual/hybrid, free and public. <a href="https://www.fda.gov/medical-devices/digital-health-center-excellence">fda.gov</a></li>
+    </ul>
+
+    <!-- 8. SIG MEETINGS & GET INVOLVED -->
+    <h1 class="sec">SIG Meetings &amp; Get Involved</h1>
+    <h3 class="lbl">Upcoming all-member DTAI SIG meetings</h3>
+    <p>Q3 and Q4 2026 meeting dates are to be scheduled. Watch your inbox for announcements.</p>
+    <h3 class="lbl">How you can get involved</h3>
+    <p>If you have an idea for a SIG workstream or webinar, want to learn about any of our ongoing projects, or would like to flag an interesting article or upcoming conference, please connect with us.</p>
+    <p>Email: <a href="mailto:jdiazdecaro@blackswancausallabs.com">jdiazdecaro@blackswancausallabs.com</a> and <a href="mailto:nivantha.naidoo@oracle.com">nivantha.naidoo@oracle.com</a>.</p>
+
+    <!-- footer -->
+    <div class="foot">
+      <span>ISPE · Digital Technology and Artificial Intelligence SIG</span>
+      <span>Quarterly Newsletter — Q2 2026</span>
+    </div>
+
+  </div><!-- /body -->
+</div><!-- /page -->
+
+</body>
+</html>
