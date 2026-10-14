@@ -4,8 +4,8 @@ Quarterly newsletter for the ISPE Digital Technology and Artificial Intelligence
 
 ## Live site
 
-- **Latest issue:** https://ispe-dtai-sig.github.io/newsletter/
-- **Q2 2026 (archive):** https://ispe-dtai-sig.github.io/newsletter/q2-2026/
+- **Latest issue:** https://ispe-dtai-sig.github.io/PUBLISHED-NEWSLETTER/
+- **Q2 2026 (archive):** https://ispe-dtai-sig.github.io/PUBLISHED-NEWSLETTER/q2-2026/
 
 ## Structure
 
